@@ -1,5 +1,7 @@
 package com.example.ProyectoRestaurantev2.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,123 +9,113 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name="cliente")
-public class Clientes {
+public class Clientes implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8295344666433158719L;
 
 	@Id
 	private int codcliente;
-	
 	@Column(name = "dni")
-	private String dni;
+	private String xdni;
 	
 	@Column(name = "nombre")
-	private String nombre;
+	private String xnombre;
 	
 	@Column(name = "apellido")
-	private String apellido;
+	private String xapellido;
 	
 	@Column(name = "email")
-	private String email;
+	private String xemail;
 	
 	@Column(name = "contraseña")
-	private String contraseña;
-	
-	@Column(name = "telefono")
-	private String telefono;
+	private String xcontrasenia;
 	
 	@Column(name = "direccion")
-	private String direccion;
+	private String xdireccion;
+	
+	@Column(name = "telefono")
+	private String xtelefono;
 	
 	@Column(name = "estado")
-	private String estado;
-
+	private String xestado;
 	
-	public Clientes () {}
-	
-	public Clientes(int codcliente, String dni, String nombre, String apellido, String email, String contraseña,
-			String telefono, String direccion, String estado) {
-		super();
-		this.codcliente = codcliente;
-		this.dni = dni;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.email = email;
-		this.contraseña = contraseña;
-		this.telefono = telefono;
-		this.direccion = direccion;
-		this.estado = estado;
-	}
-
 	public int getCodcliente() {
 		return codcliente;
 	}
-
 	public void setCodcliente(int codcliente) {
 		this.codcliente = codcliente;
 	}
-
-	public String getDni() {
-		return dni;
+	public String getXdni() {
+		return xdni;
 	}
-
-	public void setDni(String dni) {
-		this.dni = dni;
+	public void setXdni(String xdni) {
+		this.xdni = xdni;
 	}
-
-	public String getNombre() {
-		return nombre;
+	public String getXnombre() {
+		return xnombre;
 	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setXnombre(String xnombre) {
+		this.xnombre = xnombre;
 	}
-
-	public String getApellido() {
-		return apellido;
+	public String getXapellido() {
+		return xapellido;
 	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setXapellido(String xapellido) {
+		this.xapellido = xapellido;
 	}
-
-	public String getEmail() {
-		return email;
+	public String getXemail() {
+		return xemail;
 	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setXemail(String xemail) {
+		this.xemail = xemail;
 	}
-
-	public String getContraseña() {
-		return contraseña;
+	public String getXcontrasenia() {
+		return xcontrasenia;
 	}
-
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setXcontrasenia(String xcontrasenia) {
+		this.xcontrasenia = xcontrasenia;
 	}
-
-	public String getTelefono() {
-		return telefono;
+	public String getXdireccion() {
+		return xdireccion;
 	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setXdireccion(String xdireccion) {
+		this.xdireccion = xdireccion;
 	}
-
-	public String getDireccion() {
-		return direccion;
+	public String getXtelefono() {
+		return xtelefono;
 	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setXtelefono(String xtelefono) {
+		this.xtelefono = xtelefono;
 	}
-
-	public String getEstado() {
-		return estado;
+	public String getXestado() {
+		return xestado;
 	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setXestado(String xestado) {
+		this.xestado = xestado;
 	}
 	
+	public Clientes(int codcliente, String xdni, String xnombre, String xapellido, String xemail,
+			String xcontrasenia, String xdireccion, String xtelefono, String xestado) {
+		super();
+		this.codcliente = codcliente;
+		this.xdni = xdni;
+		this.xnombre = xnombre;
+		this.xapellido = xapellido;
+		this.xemail = xemail;
+		this.xcontrasenia = xcontrasenia;
+		this.xdireccion = xdireccion;
+		this.xtelefono = xtelefono;
+		this.xestado = xestado;
+	}
+	public Clientes() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
 	
 }

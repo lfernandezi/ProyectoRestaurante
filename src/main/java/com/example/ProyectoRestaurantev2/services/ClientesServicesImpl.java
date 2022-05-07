@@ -15,11 +15,6 @@ public class ClientesServicesImpl implements ClientesService{
 	@Autowired
 	ClientesRepository clirepo;
 	
-	@Override
-	public Clientes registrar(Clientes cli) {
-		// TODO Auto-generated method stub
-		return clirepo.save(cli);
-	}
 
 	@Override
 	public List<Clientes> listar() {
@@ -28,9 +23,27 @@ public class ClientesServicesImpl implements ClientesService{
 	}
 
 	@Override
-	public Optional<Clientes> buscar(int codcliente) {
+	public Clientes buscar(int codcliente) {
 		// TODO Auto-generated method stub
-		return clirepo.findById(codcliente);
+		return clirepo.findById(codcliente).orElse(null);
+	}
+
+	@Override
+	public void registrar(Clientes cli) {
+		// TODO Auto-generated method stub
+		clirepo.save(cli);
+	}
+
+	@Override
+	public void editar(Clientes cli) {
+		// TODO Auto-generated method stub
+		clirepo.saveAndFlush(cli);
+	}
+
+	@Override
+	public void eliminar(int codcliente) {
+		// TODO Auto-generated method stub
+		clirepo.deleteById(codcliente);
 	}
 
 	

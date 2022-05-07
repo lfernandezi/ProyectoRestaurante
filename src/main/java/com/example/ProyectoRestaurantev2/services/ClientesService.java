@@ -7,10 +7,14 @@ import com.example.ProyectoRestaurantev2.model.Clientes;
 
 public interface ClientesService {
 	
-	Clientes registrar (Clientes cli);
+	void registrar (Clientes cli);
 	
 	List<Clientes> listar();
 	
-	Optional<Clientes> buscar (int codcliente);
+	Clientes buscar (int codcliente);
+	
+	void editar (Clientes cli);
+	
+	void eliminar (int codcliente);
 
 }

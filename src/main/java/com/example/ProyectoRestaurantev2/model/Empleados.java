@@ -1,5 +1,6 @@
 package com.example.ProyectoRestaurantev2.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,49 +10,36 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="empleado")
-public class Empleados {
+public class Empleados implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1677631929029134524L;
+
 	@Id
-	private int codempleado; 
+	private int codempleado;	
 	
 	@Column(name="nombre")
-	private String nombre ;
+	private String nombre;
 	
 	@Column(name="apellido")
 	private String apellido;
 	
 	@Column(name="dni")
-	private String dni ;
+	private String dni;
 	
 	@Column(name="cargo")
-	private String cargo; 
+	private String cargo;
 	
 	@Column(name="contrasena")
 	private String contrasena;
 	
 	@Column(name="fecha_ingreso")
-	private Date fecha_ingreso ;
+	private Date fecha_ingreso;
 	
 	@Column(name="area")
-	private String area ;
-
-	
-	
-	public Empleados () {}
-	
-	
-	public Empleados(int codempleado, String nombre, String apellido, String dni, String cargo, String contrasena,
-			Date fecha_ingreso, String area) {
-		super();
-		this.codempleado = codempleado;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
-		this.cargo = cargo;
-		this.contrasena = contrasena;
-		this.fecha_ingreso = fecha_ingreso;
-		this.area = area;
-	}
+	private String area;
 
 	public int getCodempleado() {
 		return codempleado;
@@ -116,6 +104,26 @@ public class Empleados {
 	public void setArea(String area) {
 		this.area = area;
 	}
+
+	public Empleados() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Empleados(int codempleado, String nombre, String apellido, String dni, String cargo, String contrasena,
+			Date fecha_ingreso, String area) {
+		super();
+		this.codempleado = codempleado;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+		this.cargo = cargo;
+		this.contrasena = contrasena;
+		this.fecha_ingreso = fecha_ingreso;
+		this.area = area;
+	}
+
+	
 
 	
 }
