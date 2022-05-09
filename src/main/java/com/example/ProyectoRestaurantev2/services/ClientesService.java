@@ -17,4 +17,6 @@ public interface ClientesService {
 	
 	void eliminar (int codcliente);
 
+	Clientes buscarxEmail(String email);
+
 }

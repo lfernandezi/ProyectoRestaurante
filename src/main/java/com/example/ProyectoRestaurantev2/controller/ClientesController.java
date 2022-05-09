@@ -1,6 +1,7 @@
 package com.example.ProyectoRestaurantev2.controller;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import javax.websocket.server.PathParam;
@@ -8,8 +9,10 @@ import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,4 +50,39 @@ public class ClientesController {
 		
 		return new ResponseEntity<Clientes>(new Clientes (),HttpStatus.NOT_FOUND);
 	}
+	
+	@GetMapping("buscarxEmail")
+	public ResponseEntity<Clientes> buscarxEmail(@RequestParam("email") String email) {
+		if(cliserv.buscarxEmail(email)!= null) {
+			return new ResponseEntity<Clientes> (cliserv.buscarxEmail(email),HttpStatus.OK);
+		}else {
+		
+			return new ResponseEntity<Clientes>(new Clientes (),HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@DeleteMapping
+	public ResponseEntity <Void> eliminar(int codcliente){
+		if (cliserv.buscar(codcliente)!=null) {
+			cliserv.eliminar(codcliente);
+			return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+		}else {
+			return new ResponseEntity<Void> (HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@PutMapping
+	public ResponseEntity <Void> editar (Clientes cli){
+		if (cliserv.buscar(cli.getCodcliente())!=null) {
+			cliserv.editar(cli);
+			return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+		}else {
+			return new ResponseEntity<Void> (HttpStatus.NOT_FOUND);
+		}
+		
+	}
+	
+	
+	
+	
 }

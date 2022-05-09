@@ -46,6 +46,13 @@ public class ClientesServicesImpl implements ClientesService{
 		clirepo.deleteById(codcliente);
 	}
 
+	@Override
+	public Clientes buscarxEmail(String email) {
+		// TODO Auto-generated method stub
+		return clirepo.buscarxEmail(email);
+	}
+
 	
+
 
 }

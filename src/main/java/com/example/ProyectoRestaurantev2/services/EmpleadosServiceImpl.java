@@ -16,14 +16,40 @@ public class EmpleadosServiceImpl implements EmpleadosService{
 	private EmpleadosRepostory emplrepo;
 
 	@Override
-	public Empleados registrar(Empleados emp) {
+	public void registrar(Empleados emp) {
 		// TODO Auto-generated method stub
-		return emplrepo.save(emp);
+		emplrepo.save(emp);
 	}
 
 	@Override
 	public List<Empleados> listar() {
 		// TODO Auto-generated method stub
 		return emplrepo.findAll();
+	}
+
+	@Override
+	public Empleados buscar(int codigo) {
+		// TODO Auto-generated method stub
+		return emplrepo.findById(codigo).orElse(null);
+	}
+
+	@Override
+	public Empleados buscarxdni(String dni) {
+		// TODO Auto-generated method stub
+		return emplrepo.buscarxdni(dni);
+	}
+
+	@Override
+	public void editar(Empleados emp) {
+		emplrepo.saveAndFlush(emp);
+		
+	}
+
+	@Override
+	public void eliminar(int codigo) {
+		
+		emplrepo.deleteById(codigo);
+		// TODO Auto-generated method stub
+		
 	}
 }
