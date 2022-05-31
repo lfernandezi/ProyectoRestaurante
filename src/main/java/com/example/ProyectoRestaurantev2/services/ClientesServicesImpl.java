@@ -23,9 +23,21 @@ public class ClientesServicesImpl implements ClientesService{
 	}
 
 	@Override
+	public List<Clientes> listarxEstado(String estado) {
+		// TODO Auto-generated method stub
+		return clirepo.listarxEstado(estado);
+	}
+	
+	@Override
 	public Clientes buscar(int codcliente) {
 		// TODO Auto-generated method stub
 		return clirepo.findById(codcliente).orElse(null);
+	}
+
+	@Override
+	public Clientes buscarxEmail(String email) {
+		// TODO Auto-generated method stub
+		return clirepo.buscarxEmail(email);
 	}
 
 	@Override
@@ -46,11 +58,8 @@ public class ClientesServicesImpl implements ClientesService{
 		clirepo.deleteById(codcliente);
 	}
 
-	@Override
-	public Clientes buscarxEmail(String email) {
-		// TODO Auto-generated method stub
-		return clirepo.buscarxEmail(email);
-	}
+
+	
 
 	
 

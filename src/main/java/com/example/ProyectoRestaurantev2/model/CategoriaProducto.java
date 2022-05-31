@@ -11,7 +11,7 @@ public class CategoriaProducto {
 	
 
 	@Id
-	private int idcategoria;
+	private int codcategoria;
 	
 	@Column(name ="categoria")
 	private String categoria;
@@ -22,27 +22,31 @@ public class CategoriaProducto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CategoriaProducto(int idcategoria, String categoria) {
-		super();
-		this.idcategoria = idcategoria;
-		this.categoria = categoria;
+
+	public int getCodcategoria() {
+		return codcategoria;
 	}
 
-	public int getIdcategoria() {
-		return idcategoria;
+
+	public void setCodcategoria(int codcategoria) {
+		this.codcategoria = codcategoria;
 	}
 
-	public void setIdcategoria(int idcategoria) {
-		this.idcategoria = idcategoria;
-	}
 
 	public String getCategoria() {
 		return categoria;
 	}
 
+
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
-	}	
+	}
 
+
+	public CategoriaProducto(int codcategoria, String categoria) {
+		super();
+		this.codcategoria = codcategoria;
+		this.categoria = categoria;
+	}
 
 }

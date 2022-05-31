@@ -52,4 +52,12 @@ public class EmpleadosServiceImpl implements EmpleadosService{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public List<Empleados> listarxArea(int codarea) {
+		// TODO Auto-generated method stub
+		return emplrepo.listarEmpleadoxArea(codarea);
+	}
+
+	
 }

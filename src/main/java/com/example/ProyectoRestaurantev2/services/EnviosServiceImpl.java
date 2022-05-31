@@ -15,15 +15,35 @@ public class EnviosServiceImpl implements EnviosService {
 	private EnviosRepository enviorepo;
 
 	@Override
-	public Envios registrar(Envios e) {
-		// TODO Auto-generated method stub
-		return enviorepo.save(e);
-	}
-
-	@Override
 	public List<Envios> listar() {
 		// TODO Auto-generated method stub
 		return enviorepo.findAll();
+	}
+	
+	@Override
+	public Envios buscar(int codenvio) {
+		// TODO Auto-generated method stub
+		return enviorepo.findById(codenvio).orElse(null);
+	}
+
+
+	@Override
+	public void registrar(Envios e) {
+		// TODO Auto-generated method stub
+		enviorepo.save(e);
+	}
+	
+	@Override
+	public void editar(Envios e) {
+		// TODO Auto-generated method stub
+		enviorepo.saveAndFlush(e);
+		
+	}
+
+	@Override
+	public void eliminar(int codenvio) {
+		// TODO Auto-generated method stub
+		enviorepo.deleteById(codenvio);	
 	}
  
 	

@@ -21,68 +21,91 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.ProyectoRestaurantev2.model.Clientes;
 import com.example.ProyectoRestaurantev2.services.ClientesService;
 
-
-////http://localhost:8087/proyrestaurante/clientes
+//http://localhost:8087/proyrestaurante/clientes
 @RestController
 @RequestMapping("/clientes")
 public class ClientesController {
 
 	@Autowired
 	ClientesService cliserv;
-	
+
 	@GetMapping
-	public ResponseEntity <List<Clientes>> listar(){
-		return new ResponseEntity<List<Clientes>> (cliserv.listar(),HttpStatus.OK);
+	public ResponseEntity<List<Clientes>> listar() {
+		return new ResponseEntity<List<Clientes>>(cliserv.listar(), HttpStatus.OK);
 	}
 	
-	@PostMapping("/registrar")
-	public ResponseEntity<Void> registrar(@RequestBody Clientes cli){
-		cliserv.registrar(cli);
-		return new ResponseEntity<Void>(HttpStatus.CREATED);
+	@GetMapping("/listarxEstado")
+	public ResponseEntity<List<Clientes>> listarxEstado(@RequestParam ("estado") String estado){
+		return new ResponseEntity<List<Clientes>>(cliserv.listarxEstado(estado),HttpStatus.OK);
 	}
 	
-	//http://localhost:8087/proyrestaurante/clientes/buscar?codcliente=2
-	@GetMapping("buscar")
-	public ResponseEntity<Clientes> buscar(@RequestParam("codcliente")int codcliente) {
-		if(cliserv.buscar(codcliente)!= null) {
-			return new ResponseEntity<Clientes> (cliserv.buscar(codcliente),HttpStatus.OK);
+	// http://localhost:8087/proyrestaurante/clientes/buscar?codcliente=2
+	@GetMapping("/buscar")
+	public ResponseEntity<Clientes> buscar(@RequestParam("codcliente") int codcliente) {
+		if (cliserv.buscar(codcliente) != null) {
+			return new ResponseEntity<Clientes>(cliserv.buscar(codcliente), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Clientes>(new Clientes(), HttpStatus.NOT_FOUND);
 		}
-		
-		return new ResponseEntity<Clientes>(new Clientes (),HttpStatus.NOT_FOUND);
 	}
-	
-	@GetMapping("buscarxEmail")
+
+	@GetMapping("/buscarxEmail")
 	public ResponseEntity<Clientes> buscarxEmail(@RequestParam("email") String email) {
-		if(cliserv.buscarxEmail(email)!= null) {
-			return new ResponseEntity<Clientes> (cliserv.buscarxEmail(email),HttpStatus.OK);
-		}else {
-		
-			return new ResponseEntity<Clientes>(new Clientes (),HttpStatus.NOT_FOUND);
+		if (cliserv.buscarxEmail(email) != null) {
+			return new ResponseEntity<Clientes>(cliserv.buscarxEmail(email), HttpStatus.OK);
+		} else {
+
+			return new ResponseEntity<Clientes>(new Clientes(), HttpStatus.NOT_FOUND);
 		}
 	}
+
+	@PostMapping("/registrar")
+	public ResponseEntity<Void> registrar(@RequestBody Clientes cli) {
+		if (cliserv.buscarxEmail(cli.getXemail()) != null) {
+			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+		} else {
+			cli.setXestado("ACTIVO");
+			cliserv.registrar(cli);
+			return new ResponseEntity<Void>(HttpStatus.CREATED);
+		}
+
+	}
+	
+	@PutMapping("/desactivar")
+	public ResponseEntity<Void> desactivar(@RequestParam ("codcliente") int codcliente) {
+		if (cliserv.buscar(codcliente) != null) {
+			Clientes cliente=cliserv.buscar(codcliente);
+			cliente.setXestado("INACTIVO");
+			cliserv.editar(cliente);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@PutMapping
+	public ResponseEntity<Void> editar(@RequestBody Clientes cli) {
+		if (cliserv.buscar(cli.getCodcliente()) != null) {
+			cliserv.editar(cli);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		}
+
+	}
+	
 	
 	@DeleteMapping
-	public ResponseEntity <Void> eliminar(int codcliente){
-		if (cliserv.buscar(codcliente)!=null) {
+	public ResponseEntity<Void> eliminar(@RequestParam ("codcliente") int codcliente) {
+		if (cliserv.buscar(codcliente) != null) {
 			cliserv.eliminar(codcliente);
-			return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
-		}else {
-			return new ResponseEntity<Void> (HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	@PutMapping
-	public ResponseEntity <Void> editar (Clientes cli){
-		if (cliserv.buscar(cli.getCodcliente())!=null) {
-			cliserv.editar(cli);
-			return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
-		}else {
-			return new ResponseEntity<Void> (HttpStatus.NOT_FOUND);
-		}
-		
-	}
-	
-	
-	
-	
+
+
+
+
 }

@@ -7,16 +7,22 @@ import com.example.ProyectoRestaurantev2.model.Clientes;
 
 public interface ClientesService {
 	
-	void registrar (Clientes cli);
+	
 	
 	List<Clientes> listar();
 	
+	List<Clientes> listarxEstado(String estado);
+	
+	Clientes buscarxEmail(String email);
+	
 	Clientes buscar (int codcliente);
+	
+	void registrar (Clientes cli);
 	
 	void editar (Clientes cli);
 	
 	void eliminar (int codcliente);
 
-	Clientes buscarxEmail(String email);
+	
 
 }

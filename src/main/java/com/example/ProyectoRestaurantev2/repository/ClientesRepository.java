@@ -1,5 +1,7 @@
 package com.example.ProyectoRestaurantev2.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,4 +16,8 @@ public interface ClientesRepository extends JpaRepository<Clientes, Integer>{
 			Clientes buscarxEmail(
 			@Param("email") String email);
 
+	@Query(value = "{call sp_listarClientexEstado(:estado)}",
+			nativeQuery = true)
+			List<Clientes> listarxEstado(
+			@Param("estado") String estado);
 }

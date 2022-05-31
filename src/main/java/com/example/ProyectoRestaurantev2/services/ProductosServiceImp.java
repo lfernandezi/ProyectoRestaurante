@@ -20,6 +20,30 @@ public class ProductosServiceImp implements ProductosService{
 		return prodrepo.findAll();
 	}
 
+
+	@Override
+	public List<Productos> listarxCategorias(int codcategorias) {
+		// TODO Auto-generated method stub
+		
+		return prodrepo.listarProductoxCategoria(codcategorias);
+	}
+	
+	
+
+	@Override
+	public List<Productos> listarxPalabra(String palabra) {
+		// TODO Auto-generated method stub
+		return prodrepo.ListarProductoxPalabra(palabra);
+	}
+	
+	@Override
+	public Productos buscar(int codproducto) {
+		// TODO Auto-generated method stub
+		
+		return prodrepo.findById(codproducto).orElse(null);
+	}
+	
+	
 	@Override
 	public void registrar(Productos producto) {
 		// TODO Auto-generated method stub
@@ -39,11 +63,10 @@ public class ProductosServiceImp implements ProductosService{
 		prodrepo.deleteById(codproducto);
 	}
 
-	@Override
-	public Productos buscar(int codproducto) {
-		// TODO Auto-generated method stub
-		
-		return prodrepo.findById(codproducto).orElse(null);
-	}
+
+
+	
+
+
 
 }

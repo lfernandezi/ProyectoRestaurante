@@ -29,17 +29,18 @@ public class Empleados implements Serializable{
 	@Column(name="dni")
 	private String dni;
 	
-	@Column(name="cargo")
-	private String cargo;
 	
-	@Column(name="contrasena")
-	private String contrasena;
+	@Column(name="contrasenia")
+	private String contrasenia;
 	
 	@Column(name="fecha_ingreso")
 	private Date fecha_ingreso;
 	
-	@Column(name="area")
-	private String area;
+	@Column(name="codcargo")
+	private int codcargo;
+	
+	@Column(name="codarea")
+	private int codarea;
 
 	public int getCodempleado() {
 		return codempleado;
@@ -73,20 +74,14 @@ public class Empleados implements Serializable{
 		this.dni = dni;
 	}
 
-	public String getCargo() {
-		return cargo;
-	}
+	
 
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
-	}
-
-	public String getContrasena() {
-		return contrasena;
+	public String getContrasenia() {
+		return contrasenia;
 	}
 
 	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+		this.contrasenia = contrasena;
 	}
 
 	public Date getFecha_ingreso() {
@@ -97,31 +92,48 @@ public class Empleados implements Serializable{
 		this.fecha_ingreso = fecha_ingreso;
 	}
 
-	public String getArea() {
-		return area;
-	}
-
-	public void setArea(String area) {
-		this.area = area;
-	}
+	
+	
 
 	public Empleados() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Empleados(int codempleado, String nombre, String apellido, String dni, String cargo, String contrasena,
-			Date fecha_ingreso, String area) {
+	public Empleados(int codempleado, String nombre, String apellido, String dni, String contrasenia,
+			Date fecha_ingreso, int codcargo, int codarea) {
 		super();
 		this.codempleado = codempleado;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
-		this.cargo = cargo;
-		this.contrasena = contrasena;
+		this.contrasenia = contrasenia;
 		this.fecha_ingreso = fecha_ingreso;
-		this.area = area;
+		this.codcargo = codcargo;
+		this.codarea = codarea;
 	}
+
+	public int getCodcargo() {
+		return codcargo;
+	}
+
+	public void setCodcargo(int codcargo) {
+		this.codcargo = codcargo;
+	}
+
+	public int getCodarea() {
+		return codarea;
+	}
+
+	public void setCodarea(int codarea) {
+		this.codarea = codarea;
+	}
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
+
 
 	
 

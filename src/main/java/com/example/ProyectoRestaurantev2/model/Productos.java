@@ -18,11 +18,12 @@ public class Productos {
 	@Column(name = "descripcion")
 	private String descripcion;
 	
-	@Column(name = "categoria")
-	private String categoria;
 	
 	@Column(name = "precio")
 	private Double precio;
+	
+	@Column(name = "codcategoria")
+	private int codcategoria;
 	
 	public int getCodproducto() {
 		return codproducto;
@@ -42,11 +43,13 @@ public class Productos {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getCategoria() {
-		return categoria;
+
+	
+	public int getCodcategoria() {
+		return codcategoria;
 	}
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setCodcategoria(int codcategoria) {
+		this.codcategoria = codcategoria;
 	}
 	public Double getPrecio() {
 		return precio;
@@ -59,14 +62,17 @@ public class Productos {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Productos(int codproducto, String nombre, String descripcion, String categoria, Double precio) {
+	public Productos(int codproducto, String nombre, String descripcion, Double precio, int codcategoria) {
 		super();
 		this.codproducto = codproducto;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.categoria = categoria;
 		this.precio = precio;
-	}		
+		this.codcategoria = codcategoria;
+	}
+
+	
+
 
 	
 	

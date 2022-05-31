@@ -8,6 +8,8 @@ public interface EmpleadosService {
 
 	List<Empleados> listar ();
 	
+	List<Empleados> listarxArea(int codarea);
+	
 	Empleados buscar(int codigo);
 	
 	Empleados buscarxdni(String dni);
@@ -17,5 +19,6 @@ public interface EmpleadosService {
 	void editar (Empleados emp);
 	
 	void eliminar (int codigo);
+	
 	
 }
