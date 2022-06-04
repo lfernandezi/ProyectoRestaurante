@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ProyectoRestaurantev2.model.DetallePedido;
 import com.example.ProyectoRestaurantev2.model.Pedido;
+import com.example.ProyectoRestaurantev2.model.Productos;
 import com.example.ProyectoRestaurantev2.services.DetallePedidoService;
 import com.example.ProyectoRestaurantev2.services.PedidoService;
 
@@ -33,7 +35,20 @@ public class PedidoController {
 		return new ResponseEntity<List<Pedido>>(pedidoserv.listar(), HttpStatus.OK);
 	}
 
+	@GetMapping("listarxCliente")
+	public ResponseEntity<List<Pedido>> listarxCliente(@RequestParam ("codcliente") int codcliente) {
+		return new ResponseEntity<List<Pedido>>(pedidoserv.listarxCliente(codcliente), HttpStatus.OK);
+	}
 	
+	@GetMapping("listarxEnvio")
+	public ResponseEntity<List<Pedido>> listarxEnvio(@RequestParam ("codenvio") int codenvio) {
+		return new ResponseEntity<List<Pedido>>(pedidoserv.listarxEnvio(codenvio), HttpStatus.OK);
+	}
+	
+	@GetMapping("listarxEstado")
+	public ResponseEntity<List<Pedido>> listarxEstado(@RequestParam ("estadopedido") String estado) {
+		return new ResponseEntity<List<Pedido>>(pedidoserv.listarxEstado(estado), HttpStatus.OK);
+	}
 	@GetMapping("/buscar")
 	public ResponseEntity<Pedido> buscar(@RequestParam("codpedido") int codpedido) {
 		if (pedidoserv.buscar(codpedido) != null) {
@@ -51,6 +66,18 @@ public class PedidoController {
 		pedidoserv.registrar(p);
 		detaserv.registrar(p.getDetalle());
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
+
+	}
+	
+	
+	@PutMapping
+	public ResponseEntity<Void> editar(@RequestBody Pedido p) {
+		if (pedidoserv.buscar(p.getCodpedido()) != null) {
+			pedidoserv.editar(p);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		}
 
 	}
 

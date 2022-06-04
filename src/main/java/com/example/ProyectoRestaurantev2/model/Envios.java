@@ -16,9 +16,6 @@ public class Envios {
 	@Column(name="codempleado")
 	private int codempleado;
 	
-	@Column(name="cantidad")
-	private int cantidad;
-	
 	@Column(name="fecha_envio")
 	private Date fecha_envio;
 	
@@ -29,11 +26,11 @@ public class Envios {
 	public Envios() {}
 	
 	
-	public Envios(int codenvio, int codempleado, int cantidad, Date fecha_envio, String estadoenvio) {
+	public Envios(int codenvio, int codempleado, Date fecha_envio, String estadoenvio) {
 		super();
 		this.codenvio = codenvio;
 		this.codempleado = codempleado;
-		this.cantidad = cantidad;
+	
 		this.fecha_envio = fecha_envio;
 		this.estadoenvio = estadoenvio;
 	}
@@ -54,13 +51,8 @@ public class Envios {
 		this.codempleado = codempleado;
 	}
 
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
+	
+	
 
 	public Date getFecha_envio() {
 		return fecha_envio;

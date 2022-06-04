@@ -40,8 +40,17 @@ public class EmpleadosController {
 			return new ResponseEntity <List<Empleados>> (new ArrayList<>(), HttpStatus.NOT_FOUND);
 		}else {
 			return new ResponseEntity <List<Empleados>> (emplserv.listarxArea(codarea), HttpStatus.OK);
+		}	
+	}
+	
+	
+	@GetMapping ("/listarxcargo/{codcargo}")
+	public ResponseEntity<List<Empleados>> listarxCargo(@PathVariable ("codcargo") int codcargo){
+		if (emplserv.listarxCargo(codcargo).isEmpty()) {
+			return new ResponseEntity <List<Empleados>> (new ArrayList<>(), HttpStatus.NOT_FOUND);
+		}else {
+			return new ResponseEntity <List<Empleados>> (emplserv.listarxCargo(codcargo), HttpStatus.OK);
 		}
-		
 	}
 	
 	
@@ -61,7 +70,6 @@ public class EmpleadosController {
 		}else {
 			return new ResponseEntity<Empleados>(new Empleados (),HttpStatus.NOT_FOUND);
 		}
-		
 	}
 	
 	@PostMapping("/registrar")
@@ -79,7 +87,6 @@ public class EmpleadosController {
 		}else {
 			return new ResponseEntity<Void> (HttpStatus.NOT_FOUND);
 		}
-		
 	}
 	
 	

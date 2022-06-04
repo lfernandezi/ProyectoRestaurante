@@ -10,6 +10,8 @@ public interface EmpleadosService {
 	
 	List<Empleados> listarxArea(int codarea);
 	
+	List<Empleados> listarxCargo(int codcargo);
+	
 	Empleados buscar(int codigo);
 	
 	Empleados buscarxdni(String dni);

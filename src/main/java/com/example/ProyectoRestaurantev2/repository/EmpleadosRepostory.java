@@ -20,8 +20,12 @@ public interface EmpleadosRepostory extends JpaRepository<Empleados, Integer>{
 
 	@Query(value = "{call sp_listarEmpleadoxArea(:codarea)}",
     		nativeQuery = true)
-   List<Empleados> listarEmpleadoxArea(@Param("codarea")int codarea);
+	List<Empleados> listarEmpleadoxArea(@Param("codarea")int codarea);
 	
+	
+	@Query(value = "{call sp_listarEmpleadoxCargo(:codcargo)}",
+    		nativeQuery = true)
+	List<Empleados> listarEmpleadoxCargo(@Param("codcargo")int codcargo);
 
 
 }

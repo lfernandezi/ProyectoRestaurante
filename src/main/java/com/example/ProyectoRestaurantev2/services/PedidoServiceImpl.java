@@ -24,19 +24,19 @@ public class PedidoServiceImpl implements PedidoService{
 	@Override
 	public List<Pedido> listarxCliente(int codcliente) {
 		// TODO Auto-generated method stub
-		return null;
+		return pedidorepo.listarPedidoxCliente(codcliente);
 	}
 
 	@Override
 	public List<Pedido> listarxEnvio(int codenvio) {
 		// TODO Auto-generated method stub
-		return null;
+		return pedidorepo.listarPedidoxEnvio(codenvio);
 	}
 
 	@Override
 	public List<Pedido> listarxEstado(String estado) {
 		// TODO Auto-generated method stub
-		return null;
+		return pedidorepo.listarPedidoxEstado(estado);
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class PedidoServiceImpl implements PedidoService{
 	}
 
 	@Override
-	public void actualizar(Pedido pedido) {
+	public void editar(Pedido pedido) {
 		// TODO Auto-generated method stub
 		pedidorepo.saveAndFlush(pedido);
 	}
@@ -60,13 +60,8 @@ public class PedidoServiceImpl implements PedidoService{
 	@Override
 	public void eliminar(int codpedido) {
 		// TODO Auto-generated method stub
-	pedidorepo.deleteById(codpedido);	
+		pedidorepo.deleteById(codpedido);	
 	}
 
-	@Override
-	public void actualizarEstado(int codpedido, String estado) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }

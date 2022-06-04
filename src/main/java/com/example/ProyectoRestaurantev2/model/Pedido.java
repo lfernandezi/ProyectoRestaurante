@@ -23,7 +23,6 @@ public class Pedido {
 	
 	private String estadopedido;
 	
-	private String  motivo;
 	
 	private int codenvio;
 	
@@ -72,13 +71,7 @@ public class Pedido {
 		this.estadopedido = estadopedido;
 	}
 
-	public String getMotivo() {
-		return motivo;
-	}
-
-	public void setMotivo(String motivo) {
-		this.motivo = motivo;
-	}
+	
 
 	public int getCodenvio() {
 		return codenvio;
@@ -97,7 +90,7 @@ public class Pedido {
 		this.codcliente = codcliente;
 	}
 
-	public Pedido(int codpedido, Date fechacreacion, String direccion, double monto, String estadopedido, String motivo,
+	public Pedido(int codpedido, Date fechacreacion, String direccion, double monto, String estadopedido, 
 			int codenvio, int codcliente) {
 		super();
 		this.codpedido = codpedido;
@@ -105,7 +98,6 @@ public class Pedido {
 		this.direccion = direccion;
 		this.monto = monto;
 		this.estadopedido = estadopedido;
-		this.motivo = motivo;
 		this.codenvio = codenvio;
 		this.codcliente = codcliente;
 	}
@@ -115,7 +107,7 @@ public class Pedido {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Pedido(int codpedido, Date fechacreacion, String direccion, double monto, String estadopedido, String motivo,
+	public Pedido(int codpedido, Date fechacreacion, String direccion, double monto, String estadopedido, 
 			int codenvio, int codcliente, List<DetallePedido> detalle) {
 		super();
 		this.codpedido = codpedido;
@@ -123,7 +115,7 @@ public class Pedido {
 		this.direccion = direccion;
 		this.monto = monto;
 		this.estadopedido = estadopedido;
-		this.motivo = motivo;
+	
 		this.codenvio = codenvio;
 		this.codcliente = codcliente;
 		this.detalle = detalle;

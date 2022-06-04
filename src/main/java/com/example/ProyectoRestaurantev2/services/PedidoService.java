@@ -15,14 +15,9 @@ public interface PedidoService {
 	
 	void registrar (Pedido pedido);
 	
-	void actualizar (Pedido pedido);
+	void editar (Pedido pedido);
 	
 	void eliminar (int codpedido);
-	
-	
-	void actualizarEstado (int codpedido, String estado);
-	
-
 	
 
 }

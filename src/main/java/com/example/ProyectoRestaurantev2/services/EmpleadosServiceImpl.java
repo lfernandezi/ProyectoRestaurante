@@ -59,5 +59,11 @@ public class EmpleadosServiceImpl implements EmpleadosService{
 		return emplrepo.listarEmpleadoxArea(codarea);
 	}
 
+	@Override
+	public List<Empleados> listarxCargo(int codcargo) {
+		// TODO Auto-generated method stub
+		return emplrepo.listarEmpleadoxCargo(codcargo);
+	}
+
 	
 }

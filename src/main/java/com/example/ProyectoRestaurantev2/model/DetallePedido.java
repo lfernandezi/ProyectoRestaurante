@@ -25,8 +25,8 @@ public class DetallePedido {
 	
 
 	
-	@Column(name ="subtotal")
-	private double subtotal;
+	@Column(name ="precio")
+	private double precio;
 
 
 
@@ -56,22 +56,21 @@ public class DetallePedido {
 	}
 
 
-	public double getSubtotal() {
-		return subtotal;
+
+	public double getPrecio() {
+		return precio;
 	}
 
-
-	public void setSubtotal(double subtotal) {
-		this.subtotal = subtotal;
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 
-
-	public DetallePedido(int codpedido, int codproducto, int cantidad, double subtotal) {
+	public DetallePedido(int codpedido, int codproducto, int cantidad, double precio) {
 		super();
 		this.codpedido = codpedido;
 		this.codproducto = codproducto;
 		this.cantidad = cantidad;
-		this.subtotal = subtotal;
+		this.precio = precio;
 	}
 
 	public DetallePedido() {
