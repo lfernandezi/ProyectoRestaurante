@@ -31,7 +31,7 @@ public class Clientes implements Serializable{
 	@Column(name = "email")
 	private String xemail;
 	
-	@Column(name = "contraseña")
+	@Column(name = "contrasenia")
 	private String xcontrasenia;
 	
 	@Column(name = "direccion")
@@ -102,6 +102,20 @@ public class Clientes implements Serializable{
 			String xcontrasenia, String xdireccion, String xtelefono, String xestado) {
 		super();
 		this.codcliente = codcliente;
+		this.xdni = xdni;
+		this.xnombre = xnombre;
+		this.xapellido = xapellido;
+		this.xemail = xemail;
+		this.xcontrasenia = xcontrasenia;
+		this.xdireccion = xdireccion;
+		this.xtelefono = xtelefono;
+		this.xestado = xestado;
+	}
+	
+	
+	public Clientes(String xdni, String xnombre, String xapellido, String xemail, String xcontrasenia,
+			String xdireccion, String xtelefono, String xestado) {
+		super();
 		this.xdni = xdni;
 		this.xnombre = xnombre;
 		this.xapellido = xapellido;

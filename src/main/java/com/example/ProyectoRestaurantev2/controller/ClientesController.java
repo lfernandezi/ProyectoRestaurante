@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,8 +50,8 @@ public class ClientesController {
 		}
 	}
 
-	@GetMapping("/buscarxEmail")
-	public ResponseEntity<Clientes> buscarxEmail(@RequestParam("email") String email) {
+	@GetMapping("/buscarxEmail/{email}")
+	public ResponseEntity<Clientes> buscarxEmail(@PathVariable("email") String email) {
 		if (cliserv.buscarxEmail(email) != null) {
 			return new ResponseEntity<Clientes>(cliserv.buscarxEmail(email), HttpStatus.OK);
 		} else {
@@ -64,8 +65,16 @@ public class ClientesController {
 		if (cliserv.buscarxEmail(cli.getXemail()) != null) {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		} else {
-			cli.setXestado("ACTIVO");
-			cliserv.registrar(cli);
+			Clientes clibd= new Clientes();
+			clibd.setXnombre(cli.getXnombre());
+			clibd.setXapellido(cli.getXapellido());
+			clibd.setXdni(cli.getXdni());
+			clibd.setXdireccion(cli.getXdireccion());
+			clibd.setXtelefono(cli.getXtelefono());
+			clibd.setXemail(cli.getXemail());
+			clibd.setXcontrasenia(cli.getXcontrasenia());	
+			clibd.setXestado(cli.getXestado());
+			cliserv.registrar(clibd);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);
 		}
 
