@@ -22,8 +22,8 @@ public interface DetallePedidoRepository extends JpaRepository<DetallePedido, In
 	@Transactional
 	@Modifying
 	@Query(value = "{call sp_IngresarDetallePedido(:codproducto,"
-	+ ":cantidad,:subtotal)}", nativeQuery = true)
+	+ ":cantidad,:precio,:subtotal)}", nativeQuery = true)
 	void ingresarDetallePedido(@Param("codproducto") Integer codproducto, 
-			@Param("cantidad") int cantidad, @Param("subtotal") Double subtotal);
+			@Param("cantidad") int cantidad,@Param("precio")Double precio, @Param("subtotal") Double subtotal);
 
 }

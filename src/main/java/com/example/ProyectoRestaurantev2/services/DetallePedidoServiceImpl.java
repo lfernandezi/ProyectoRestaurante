@@ -1,6 +1,6 @@
 package com.example.ProyectoRestaurantev2.services;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class DetallePedidoServiceImpl implements DetallePedidoService{
 	@Override
 	public void registrar(List<DetallePedido> listaped) {
 		for(DetallePedido detalle: listaped) {
-			detarepo.ingresarDetallePedido(detalle.getCodproducto(),detalle.getCantidad(), detalle.getPrecio());
+			detarepo.ingresarDetallePedido(detalle.getCodproducto(),detalle.getCantidad(), detalle.getPrecio(),detalle.getCantidad()*detalle.getPrecio());
 		}
 		// TODO Auto-generated method stub
 		
