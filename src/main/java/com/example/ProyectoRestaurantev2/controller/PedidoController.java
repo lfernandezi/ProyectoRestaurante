@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.ProyectoRestaurantev2.model.Clientes;
 import com.example.ProyectoRestaurantev2.model.DetallePedido;
 import com.example.ProyectoRestaurantev2.model.Pedido;
 import com.example.ProyectoRestaurantev2.model.Productos;
@@ -43,6 +44,18 @@ public class PedidoController {
 	@GetMapping("listarxEnvio")
 	public ResponseEntity<List<Pedido>> listarxEnvio(@RequestParam ("codenvio") int codenvio) {
 		return new ResponseEntity<List<Pedido>>(pedidoserv.listarxEnvio(codenvio), HttpStatus.OK);
+	}
+	
+	@GetMapping("listarultimoxCliente")
+	public ResponseEntity<Pedido> listarultimoxCliente(@RequestParam ("codcliente") int codcliente) {
+		
+		
+		if (pedidoserv.listarUltimoPedidoxCliente(codcliente) != null) {
+			return new ResponseEntity<Pedido>(pedidoserv.listarUltimoPedidoxCliente(codcliente), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Pedido>(new Pedido(), HttpStatus.NOT_FOUND);
+		}
+		
 	}
 	
 	@GetMapping("listarxEstado")

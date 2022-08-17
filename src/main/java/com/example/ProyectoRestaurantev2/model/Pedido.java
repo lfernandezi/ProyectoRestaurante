@@ -19,10 +19,13 @@ public class Pedido {
 	
 	private String direccion;
 	
+	private String ubicacion;
+	
 	private double monto;
 	
 	private String estadopedido;
 	
+	private String motivo;
 	
 	private int codenvio;
 	
@@ -90,7 +93,7 @@ public class Pedido {
 		this.codcliente = codcliente;
 	}
 
-	public Pedido(int codpedido, Date fechacreacion, String direccion, double monto, String estadopedido, 
+	/*public Pedido(int codpedido, Date fechacreacion, String direccion, double monto, String estadopedido, 
 			int codenvio, int codcliente) {
 		super();
 		this.codpedido = codpedido;
@@ -100,14 +103,45 @@ public class Pedido {
 		this.estadopedido = estadopedido;
 		this.codenvio = codenvio;
 		this.codcliente = codcliente;
-	}
+	}*/
 
+	
 	public Pedido() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Pedido(int codpedido, Date fechacreacion, String direccion, double monto, String estadopedido, 
+	public Pedido(int codpedido, Date fechacreacion, String direccion, String ubicacion, double monto,
+			String estadopedido, String motivo, int codenvio, int codcliente) {
+		super();
+		this.codpedido = codpedido;
+		this.fechacreacion = fechacreacion;
+		this.direccion = direccion;
+		this.ubicacion = ubicacion;
+		this.monto = monto;
+		this.estadopedido = estadopedido;
+		this.motivo = motivo;
+		this.codenvio = codenvio;
+		this.codcliente = codcliente;
+	}
+
+	
+	public Pedido(int codpedido, Date fechacreacion, String direccion, String ubicacion, double monto,
+			String estadopedido, String motivo, int codenvio, int codcliente, List<DetallePedido> detalle) {
+		super();
+		this.codpedido = codpedido;
+		this.fechacreacion = fechacreacion;
+		this.direccion = direccion;
+		this.ubicacion = ubicacion;
+		this.monto = monto;
+		this.estadopedido = estadopedido;
+		this.motivo = motivo;
+		this.codenvio = codenvio;
+		this.codcliente = codcliente;
+		this.detalle = detalle;
+	}
+
+	/*public Pedido(int codpedido, Date fechacreacion, String direccion, double monto, String estadopedido, 
 			int codenvio, int codcliente, List<DetallePedido> detalle) {
 		super();
 		this.codpedido = codpedido;
@@ -119,7 +153,7 @@ public class Pedido {
 		this.codenvio = codenvio;
 		this.codcliente = codcliente;
 		this.detalle = detalle;
-	}
+	}*/
 
 	public List<DetallePedido> getDetalle() {
 		return detalle;
@@ -127,6 +161,22 @@ public class Pedido {
 
 	public void setDetalle(List<DetallePedido> detalle) {
 		this.detalle = detalle;
+	}
+
+	public String getUbicacion() {
+		return ubicacion;
+	}
+
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+
+	public String getMotivo() {
+		return motivo;
+	}
+
+	public void setMotivo(String motivo) {
+		this.motivo = motivo;
 	}
 	
 	

@@ -25,7 +25,7 @@ public class DetallePedidoServiceImpl implements DetallePedidoService{
 	@Override
 	public void registrar(List<DetallePedido> listaped) {
 		for(DetallePedido detalle: listaped) {
-			detarepo.ingresarDetallePedido(detalle.getCodproducto(),detalle.getCantidad(), detalle.getPrecio(),detalle.getCantidad()*detalle.getPrecio());
+			detarepo.ingresarDetallePedido(detalle.getCodproducto(),detalle.getCantidad(), detalle.getPrecio(),detalle.getSubtotal());
 		}
 		// TODO Auto-generated method stub
 		

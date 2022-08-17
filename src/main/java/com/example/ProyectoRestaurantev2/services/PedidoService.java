@@ -11,6 +11,8 @@ public interface PedidoService {
 	List<Pedido> listarxEnvio(int codenvio);
 	List<Pedido> listarxEstado(String estado);
 	
+	Pedido listarUltimoPedidoxCliente(int codcliente);
+	
 	Pedido buscar(int codpedido);
 	
 	void registrar (Pedido pedido);

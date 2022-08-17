@@ -48,7 +48,7 @@ public class PedidoServiceImpl implements PedidoService{
 	@Override
 	public void registrar(Pedido pedido) {
 		// TODO Auto-generated method stub
-		pedidorepo.ingresarPedido(pedido.getCodcliente(),pedido.getDireccion(),pedido.getMonto(),"RECIBIDO");
+		pedidorepo.ingresarPedido(pedido.getCodcliente(),pedido.getDireccion(),pedido.getUbicacion(),pedido.getMonto(),"RECIBIDO");
 	}
 
 	@Override
@@ -61,6 +61,12 @@ public class PedidoServiceImpl implements PedidoService{
 	public void eliminar(int codpedido) {
 		// TODO Auto-generated method stub
 		pedidorepo.deleteById(codpedido);	
+	}
+
+	@Override
+	public Pedido listarUltimoPedidoxCliente(int codcliente) {
+		// TODO Auto-generated method stub
+		return pedidorepo.listaroUltimoPedidoxCliente(codcliente);
 	}
 
 	
